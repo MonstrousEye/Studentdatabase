@@ -1,0 +1,46 @@
+{% extends 'index.html' %}
+{% block title %}
+search
+{% endblock title %}
+{% block body %}
+
+<div class="container mt-3">
+
+<h3 style="color: rgb(255, 255, 255); font-family: cursive;"><center><marquee>Search Results.... </marquee></center></h3>
+{% if allPosts|length < 1 %}
+<div class="container" style="color: red; font-size: larger; font-family: cursive;">
+Your search  <b>{{query}}</b> did not match any information 
+<br>
+Suggestions:
+<ul>
+<li>
+Make sure that all words are spelled correctly.<br>
+</ul>
+</li>
+</div>
+{% endif %}
+{% for  post in allPosts %}
+
+<center>
+<div class="container">
+  <div class="card" style="width: 20rem;">
+    <div class="card-header">
+      Student Details
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">NAME : {{post.fname}}.{{post.lname}}</li>
+      <li class="list-group-item">BRANCH : {{post.branch}}</li>
+      <li class="list-group-item">SEMESTER : {{post.sem}}</li>
+      <li class="list-group-item">EMAIL : {{post.email}}</li>
+      <li class="list-group-item">PHONE : {{post.phone}}</li>
+      <li class="list-group-item">COLLEGE : {{post.college}}</li>
+      <li class="list-group-item">CITY : {{post.city}}</li>
+      <li class="list-group-item">STATE : {{post.state}}</li>
+    </ul>
+  </div>
+  <br>
+         <a href="http://127.0.0.1:8000/search" download="search"><button>Download</button></a> 
+   </div> 
+  </center>
+   {% endfor %}
+   {% endblock body%}
